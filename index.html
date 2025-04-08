@@ -53,11 +53,11 @@
   <h2>Phiếu khảo sát khách hàng - Nhất Hương</h2>
 
   <form id="surveyForm">
-    <label>1. Biết đến sản phẩm qua nguồn nào?</label>
+    <!-- <label>1. Biết đến sản phẩm qua nguồn nào?</label>
     <select name="formality">
       <option>Phát phiếu cho khách</option>
       <option>Gọi điện thoại</option>
-    </select>
+    </select> -->
     
     <label>Khách hàng</label>
     <input type="text" name="customerName" required>
@@ -180,7 +180,7 @@
       const data = {};
       formData.forEach((value, key) => data[key] = value);
 
-      fetch("https://script.google.com/macros/s/AKfycbynFK4PdcsyjzqXd_gGyppF9gzQredSYYOOZT_RA0ZTBeqIYBn_fvSaRbMHR6ypXaD3/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbwWOm8nnyd1r06plmXdO1wdWDz8v9raxkcTUPLmv-xbd6YBUKg7uejocdVFKJ0oy-C1kg/exec", {
         method: "POST",
         mode: "no-cors",
         headers: {
