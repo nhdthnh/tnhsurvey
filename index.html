@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Phiếu khảo sát khách hàng - Nhất Hương</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f9f9f9;
+    }
+    h2 {
+      color: #b40000;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #b40000;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #900;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Phiếu khảo sát khách hàng - Nhất Hương</h2>
+
+<form id="surveyForm">
+  <label>Khách hàng / Tiệm bánh / Công ty</label>
+  <input type="text" name="customerName" required>
+
+  <label>Địa chỉ</label>
+  <input type="text" name="address">
+
+  <label>Điện thoại</label>
+  <input type="text" name="phone">
+
+  <label>1. Biết đến sản phẩm qua nguồn nào?</label>
+  <select name="source">
+    <option>Internet</option>
+    <option>Hội chợ/hội thảo</option>
+    <option>Nguồn khác</option>
+  </select>
+
+  <label>2. Mẫu mã sản phẩm</label>
+  <select name="design">
+    <option>Mẫu mã lạ</option>
+    <option>Cải tiến thêm</option>
+    <option>Được đẹp</option>
+  </select>
+
+  <label>3. Thời gian giao hàng</label>
+  <select name="deliveryTime">
+    <option>Đúng tiến độ</option>
+    <option>Trễ</option>
+  </select>
+
+  <label>4. Chăm sóc, hỗ trợ khách hàng</label>
+  <select name="support">
+    <option>Rất hài lòng</option>
+    <option>Hài lòng</option>
+    <option>Chưa hài lòng</option>
+  </select>
+
+  <label>5. Đánh giá thông tin sản phẩm</label>
+  <select name="infoQuality">
+    <option>Thông tin đầy đủ</option>
+    <option>Dễ hiểu</option>
+    <option>Cần bổ sung thêm</option>
+  </select>
+
+  <label>6. Đánh giá chất lượng sản phẩm</label>
+  <select name="productQuality">
+    <option>Tốt</option>
+    <option>Khá</option>
+    <option>Trung bình</option>
+    <option>Kém</option>
+  </select>
+
+  <label>7. Đánh giá về giá bán sản phẩm</label>
+  <select name="price">
+    <option>Hợp lý</option>
+    <option>Cao</option>
+    <option>Thấp</option>
+  </select>
+
+  <label>8. Lợi ích mang lại khi sử dụng</label>
+  <textarea name="benefits"></textarea>
+
+  <label>9. Phát hiện hàng nhái?</label>
+  <select name="fakeProduct">
+    <option>Không</option>
+    <option>Có</option>
+  </select>
+
+  <label>10. Có đơn vị nào chào bán hàng giống?</label>
+  <select name="similarProducts">
+    <option>Không</option>
+    <option>Có</option>
+  </select>
+
+  <label>11. Sản phẩm bị hao hụt/thiếu thông tin?</label>
+  <select name="weightLoss">
+    <option>Không</option>
+    <option>Có</option>
+  </select>
+
+  <label>12. Có dấu hiệu bị khui/dán lại?</label>
+  <select name="tampering">
+    <option>Không</option>
+    <option>Có</option>
+  </select>
+
+  <label>Đánh giá chung</label>
+  <select name="overallRating">
+    <option>Rất hài lòng</option>
+    <option>Hài lòng</option>
+    <option>Chưa hài lòng</option>
+  </select>
+
+  <label>Ý kiến khác</label>
+  <textarea name="additionalComments"></textarea>
+
+  <label>Góp ý cải thiện chất lượng</label>
+  <textarea name="improvementSuggestions"></textarea>
+
+  <label>Muốn trao đổi trực tiếp?</label>
+  <select name="wantContact">
+    <option>Không có nhu cầu</option>
+    <option>Có nhu cầu</option>
+  </select>
+
+  <button type="submit">Gửi khảo sát</button>
+</form>
+
+<script>
+  document.getElementById("surveyForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const data = {};
+    formData.forEach((value, key) => data[key] = value);
+
+    fetch("https://script.google.com/macros/s/AKfycbzEglfN7Bd7mjgvXDzSp9N3EQBp3fNNCngNyFuUG7tQbSB8u_HMg6NMI2bSmRYkcQQZ/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+    .then(res => res.ok ? alert("Đã gửi thành công!") : alert("Gửi thất bại."))
+    .catch(err => alert("Lỗi khi gửi dữ liệu: " + err));
+  });
+</script>
+
+</body>
+</html>
